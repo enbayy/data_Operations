@@ -1,13 +1,10 @@
-// pages/api/data.js
-
-import { prisma } from '../../lib/prisma'; // Prisma client'ı
+import { prisma } from '../../lib/prisma';
 
 export default async function handler(req, res) {
     if (req.method === 'GET') {
         try {
-            // Veritabanından tüm verileri almak
-            const data = await prisma.data.findMany(); // Prisma veri modelini kullanıyoruz
-            res.status(200).json(data); // JSON formatında veriyi döndürüyoruz
+            const data = await prisma.data.findMany();
+            res.status(200).json(data);
         } catch (error) {
             res.status(500).json({ error: 'Failed to fetch data' });
         }

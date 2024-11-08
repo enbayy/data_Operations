@@ -1,21 +1,19 @@
-// pages/api/delete.js
 import { prisma } from '../../lib/prisma';
 
 export default async function handler(req, res) {
   if (req.method === 'DELETE') {
-    const { id } = req.body; // Silinecek verinin ID'sini al
+    const { id } = req.body;
 
     try {
-      // Prisma ile veriyi silin
       const deletedData = await prisma.data.delete({
-        where: { id: id }, // Silinecek veriyi ID'ye göre belirleyin
+        where: { id: id },
       });
-      res.status(200).json(deletedData); // Başarı durumunda response döndür
+      res.status(200).json(deletedData);
     } catch (error) {
-      console.error(error); // Hata mesajını konsola yazdırın
-      res.status(500).json({ error: 'Failed to delete data' }); // Hata durumunda 500 döndür
+      console.error(error);
+      res.status(500).json({ error: 'Failed to delete data' });
     }
   } else {
-    res.status(405).json({ error: 'Method Not Allowed' }); // DELETE dışındaki metodlar için hata
+    res.status(405).json({ error: 'Method Not Allowed' });
   }
 }

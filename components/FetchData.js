@@ -1,4 +1,5 @@
 "use client"
+
 import { useEffect, useState } from 'react';
 
 function FetchData() {
@@ -6,19 +7,19 @@ function FetchData() {
 
     useEffect(() => {
         const getData = async () => {
-            const response = await fetch('/api/getData'); // API'den veri alıyoruz
+            const response = await fetch('/api/getData');
             const data = await response.json();
-            setData(data); // Alınan veriyi state'e kaydediyoruz
+            setData(data);
         };
-        getData(); // Veriyi almak için fonksiyonu çalıştırıyoruz
+        getData();
     }, []);
 
     return (
         <div>
-            <h1>Veriler:</h1>
-            <ul>
+            <h1 className='text-black underline font-extrabold'>Veriler:</h1>
+            <ul className='text-black'>
                 {data.map((item) => (
-                    <li key={item.id}>{item.name} {item.description}</li> // Verileri listeliyoruz
+                    <li key={item.id}>{item.name} {item.description}</li>
                 ))}
             </ul>
         </div>

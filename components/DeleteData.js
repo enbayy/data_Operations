@@ -16,18 +16,18 @@ function DeleteData() {
     });
 
     const result = await response.json();
-    console.log(result); // Backend'den gelen yanıtı konsola yazdırıyoruz
+    console.log(result);
   };
 
   return (
-    <form onSubmit={handleDelete}>
+    <form className='flex flex-col gap-2' onSubmit={handleDelete}>
       <input
+        className='text-black border rounded-xl p-1'
         type="text"
         value={id}
-        onChange={(e) => setId(e.target.value)} // ID inputu
-        placeholder="ID"
+        onChange={(e) => setId(e.target.value)}
       />
-      <button type="submit">Sil</button>
+      <button className='bg-slate-500 font-bold text-black border rounded-xl p-1' type="submit">Sil</button>
     </form>
   );
 }

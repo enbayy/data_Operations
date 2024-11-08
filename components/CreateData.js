@@ -20,24 +20,26 @@ function CreateData() {
     });
 
     const result = await response.json();
-    console.log(result); // Backend'den gelen yanıtı konsola yazdırıyoruz
+    console.log(result);
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form className='flex flex-col gap-2' onSubmit={handleSubmit}>
       <input
+        className='text-black border rounded-xl p-1'
         type="text"
         value={name}
-        onChange={(e) => setName(e.target.value)} // Name inputu
+        onChange={(e) => setName(e.target.value)}
         placeholder="Name"
       />
       <input
+        className='text-black border rounded-xl p-1'
         type="text"
         value={description}
-        onChange={(e) => setDescription(e.target.value)} // Description inputu
+        onChange={(e) => setDescription(e.target.value)}
         placeholder="Description"
       />
-      <button type="submit">Gönder</button>
+      <button className='bg-slate-500 font-bold text-black border rounded-xl p-1' type="submit">Gönder</button>
     </form>
   );
 }
